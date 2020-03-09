@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8 />
+  <title>Population & Density in Toronto</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .legend {
+      background-color: #fff;
+      border-radius: 3px;
+      bottom: 30px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      font: 24px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      padding: 20px;
+      position: absolute;
+      right: 10px;
+      z-index: 1;
+    }
+
+    .legend h4 {
+      margin: 0 0 10px;
+    }
+
+    .legend div span {
+      border-radius: 50%;
+      display: inline-block;
+      height: 20px;
+      margin-right: 5px;
+      width: 20px;
+    }
+
+    #menu {
+      background: #fff;
+      position: absolute;
+      z-index: 1;
+      top: 10px;
+      right: 10px;
+      border-radius: 3px;
+      width: 240px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      font-family: 'Open Sans', sans-serif;
+      padding: 15px;
+    }
+
+    /* #menu a {
+      font-size: 13px;
+      color: #404040;
+      display: block;
+      margin: 0;
+      padding: 0;
+      padding: 10px;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+      text-align: center;
+    } */
+
+    /* #menu a:last-child {
+      border: none;
+    } */
+
+    /* #menu a:hover {
+      background-color: #f8f8f8;
+      color: #404040;
+    } */
+
+    /* #menu a.active {
+      background-color: #3887be;
+      color: #ffffff;
+    } */
+
+    /* #menu a.active:hover {
+      background: #3074a4;
+    } */
+  </style>
+
+</head>
+
+<body>
+  <nav id='menu'>
+    <div>
+      <input type="radio" class='menu' id='pop' name='layer' checked>
+      <label for="pop">Total Population</label>
+    </div>
+    <div>
+      <input type="radio" class='menu' id='dense' name='layer'>
+      <label for="dense">Population Density</label>
+    </div>
+  </nav>
+  <div id='map' class='map'> </div>
+  <div id='popLegend' class='legend'>
+    <h4>Total Population</h4> <!-- Legend title -->
+    <div><span style="background-color: #edf8fb"></span>0-422</div> <!-- a 'subdivision showing a colored circle and then text describing it' -->
+    <div><span style="background-color: #b2e2e2"></span>423-507</div>
+    <div><span style="background-color: #66c2a4"></span>508-608</div>
+    <div><span style="background-color: #2ca25f"></span>609-887</div>
+    <div><span style="background-color: #006d2c"></span>888+</div>
+  </div>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
+  <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
+  <script src='./index.js'></script>
+
+</body>
+
+</html>
