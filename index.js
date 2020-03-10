@@ -95,63 +95,66 @@ map.on('load', () => {
 
 });
 
-map.on('style-load', ()=> {
-  let popMapIsVisible = true
 
-  let visibleMap = document.getElementsByClassName('menu')
-  let popMap = visibleMap[0].id;
-  let denseMap = visibleMap[1].id;
+// OTHER CODE THAT WAS IN THE API EXAMPLE
+// let toggleableLayerIds = ['pop', 'dense'];
+//
+// for (let i=0; i<toggleableLayerIds.length; i++) {
+//   let id = toggleableLayerIds[i];
+//   // console.log(id)
+//
+//   let link = document.createElement('a');
+//   link.href = '#';
+//   link.className = 'active';
+//   link.textContent = id;
+//   // console.log(link)
+//   console.log(link.textContent)
+//
+//   link.onclick = function(e) {
+//     let clickedLayer = this.textContent;
+//     // console.log(clickedLayer)
+//     e.preventDefault();
+//     e.stopPropagation();
+//
+//     let visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+//     // let invisibility = map.getLayoutProperty(clickedLayer, 'none')
+//     // console.log(visibility)
+//
+//     if (visibility === 'visible') {
+//       map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+//       this.className = "";
+//     } else {
+//       this.className = 'active';
+//       map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+//     }
+//   };
+//
+//   // let layers = document.getElementById('menu');
+//   // layers.appendChild(link);
+// };
 
-  console.log(visibleMap)
-  console.log(visibleMap[0].checked)
-  console.log(visibleMap[1].checked)
 
-  if (popMap.checked) {
-    // let selectedLayer = popMap;
-    // console.log(selectedLayer)
-    map.setLayoutProperty(popMap, 'visibility', 'visible')
+// THIS IS A NAV I HAVE TO ADD AGAIN LATER BUT RIGHT NOW ITS IN THE WAY OF THE RADIO
+// map.addControl(new mapboxgl.NavigationControl());
+
+
+
+function toggleMap(name) {
+  // let legend = document.getElementsByClassName('legend')
+  // console.log(legend)
+  if (name === 'pop') {
+    map.setLayoutProperty('pop', 'visibility', 'visible');
+    map.setLayoutProperty('dense', 'visibility', 'none');
+    document.getElementById(popLegend).style.display = 'inline-block';
+    document.getElementById(denseLegend).style.display = 'none';
   } else {
-    // selectedLayer = visibleMap[1].id;
-    map.setLayoutProperty(denseMap, 'visibility', 'visible')
-    map.setLayoutProperty(popMap, 'visibility', 'none')
+    map.setLayoutProperty('dense', 'visibility', 'visible');
+    map.setLayoutProperty('pop', 'visibility', 'none');
+    document.getElementById(popLegend).style.display = 'none';
+    document.getElementById(denseLegend).style.display = 'inline-block';
   }
-});
-
-
-let toggleableLayerIds = ['pop', 'dense'];
-
-for (let i=0; i<toggleableLayerIds.length; i++) {
-  let id = toggleableLayerIds[i];
-  // console.log(id)
-
-  let link = document.createElement('a');
-  link.href = '#';
-  link.className = 'active';
-  link.textContent = id;
-  // console.log(link)
-  console.log(link.textContent)
-
-  link.onclick = function(e) {
-    let clickedLayer = this.textContent;
-    // console.log(clickedLayer)
-    e.preventDefault();
-    e.stopPropagation();
-
-    let visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-    // let invisibility = map.getLayoutProperty(clickedLayer, 'none')
-    // console.log(visibility)
-
-    if (visibility === 'visible') {
-      map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-      this.className = "";
-    } else {
-      this.className = 'active';
-      map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-    }
-  };
-
-  let layers = document.getElementById('menu');
-  layers.appendChild(link);
 };
 
-// map.addControl(new mapboxgl.NavigationControl());
+function toggleLegend(name) {
+
+}
